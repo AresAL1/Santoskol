@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Venda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            background-color: #000000; /* Fundo totalmente preto */
+            color: #E5E4E2; /* Cor da fonte cinza Platinum */
+            font-family: 'Cantata One', serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+        .product-options {
+            margin: 20px 0;
+        }
+        select {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #003366; /* Azul escuro */
+            color: #E5E4E2;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 51, 102, 0.5); /* Sombra azul escuro */
+            transition: transform 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.5);
+        }
+        .whatsapp-btn a {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha seu Produto</h1>
+        <p>Selecione o item que deseja comprar:</p>
+
+        <div class="product-options">
+            <select id="product">
+                <option value="produto1">Produto 1 - R$ 100,00</option>
+                <option value="produto2">Produto 2 - R$ 200,00</option>
+                <option value="produto3">Produto 3 - R$ 300,00</option>
+            </select>
+        </div>
+
+        <button onclick="confirmPurchase()">Confirmar Compra</button>
+    </div>
+
+    <div class="whatsapp-btn">
+        <a href="https://wa.me/+5561994018988" target="_blank">💬</a>
+    </div>
+
+    <script>
+        function confirmPurchase() {
+            const product = document.getElementById("product").value;
+            alert("Você selecionou " + product);
+            window.location.href = 'pagina-upsell.html';
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Pagamento</title>
+    <style>
+        body {
+            background-color: #000000; /* Fundo totalmente preto */
+            color: #E5E4E2; /* Cor da fonte cinza Platinum */
+            font-family: 'Cantata One', serif;
+        }
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            background-color: #003366; /* Azul escuro */
+            color: #E5E4E2;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 51, 102, 0.5); /* Sombra azul escuro */
+            transition: transform 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .admin-btn {
+            margin-top: 20px;
+            background-color: #ff3333; /* Vermelho para administrador */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pague seu Pedido</h1>
+        <p>Escolha a forma de pagamento:</p>
+
+        <!-- Botão para Pagamento via Pix -->
+        <button onclick="payWithPix()">Pagamento com Pix</button>
+
+        <!-- Botão para Admin configurar o banco remetente -->
+        <button class="admin-btn" onclick="adminConfig()">Configurar Banco (Admin)</button>
+    </div>
+
+    <script>
+        function payWithPix() {
+            alert("Pagamento via Pix selecionado.");
+            // Aqui você pode implementar a lógica para processar o pagamento via Pix
+        }
+
+        function adminConfig() {
+            const adminPassword = prompt("Insira a senha de administrador:");
+            if (adminPassword === "admin123") { // Substitua por sua lógica de autenticação real
+                const bankName = prompt("Digite o nome do banco remetente:");
+                alert("Banco configurado para: " + bankName);
+                // Aqui você pode salvar o nome do banco em um sistema de backend
+            } else {
+                alert("Acesso negado. Apenas administradores podem realizar esta ação.");
+            }
+        }
+    </script>
+</body>
+</html>
